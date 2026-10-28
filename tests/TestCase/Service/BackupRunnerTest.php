@@ -145,6 +145,38 @@ class BackupRunnerTest extends TestCase {
     }
 
 /**
+ * The failure message carries the command's error output on one line (on
+ * Windows a missing command takes two).
+ *
+ * @return void
+ */
+    public function testFailureMessageCarriesTheErrorOutput(): void {
+        $backup = new class extends BackupRunner {
+
+/**
+ * Fail like a missing command on Windows.
+ *
+ * @param string $command Command.
+ * @param string|null $stdoutFile Stdout file.
+ * @return int Exit code.
+ */
+            public function runProcess(string $command, ?string $stdoutFile): int {
+                $this->_lastError = "'mysqldump' is not recognized as an internal or external command,\r\noperable program or batch file.\r\n";
+
+                return 1;
+            }
+
+        };
+
+        try {
+            $backup->run();
+            $this->fail('A failing mysqldump must fail the backup');
+        } catch (BackupException $exception) {
+            $this->assertSame(__d('backup', 'mysqldump failed (exit code %d).', [1]) . " 'mysqldump' is not recognized as an internal or external command, operable program or batch file.", $exception->getMessage());
+        }
+    }
+
+/**
  * --routines is on by default and can be turned off (shared hosts without
  * the privilege to read the routines).
  *

@@ -421,19 +421,23 @@ class BackupRunner {
     }
 
 /**
- * Append the last line of the failed command's error output, if any (e.g.
- * "command not found" or "Permission denied (publickey)").
+ * Append the failed command's error output, if any, on one line and cut to
+ * its last 300 characters (e.g. "command not found" or "Permission denied
+ * (publickey)"; on Windows a missing command takes two lines).
  *
  * @param string $message Message.
  * @return string Message.
  */
     protected function _withError(string $message): string {
-        $lines = array_values(array_filter(array_map('trim', preg_split('/\R/', $this->_lastError) ?: [])));
-        if ($lines === []) {
+        $error = trim((string)preg_replace('/\s+/', ' ', $this->_lastError));
+        if ($error === '') {
             return $message;
         }
+        if (mb_strlen($error) > 300) {
+            $error = '…' . mb_substr($error, -300);
+        }
 
-        return $message . ' ' . mb_substr(end($lines), 0, 300);
+        return $message . ' ' . $error;
     }
 
 /**
