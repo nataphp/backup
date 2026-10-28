@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Backup Plugin\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Sérgio Dinis Lopes\n"
+"Language-Team: Sérgio Dinis Lopes\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/Service/BackupRunner.php
+msgid "Backup.path is not set."
+msgstr "Backup.path não está definido."
+
+#: src/Service/BackupRunner.php
+msgid "No external destination (Backup.remote): an external copy is mandatory here."
+msgstr "Sem destino externo (Backup.remote): a cópia externa é obrigatória aqui."
+
+#: src/Service/BackupRunner.php
+msgid "Could not create %s"
+msgstr "Não foi possível criar %s"
+
+#: src/Service/BackupRunner.php
+msgid "Database: %s"
+msgstr "Base de dados: %s"
+
+#: src/Service/BackupRunner.php
+msgid "Invalid folder name in Backup.folders: %s"
+msgstr "Nome de pasta inválido em Backup.folders: %s"
+
+#: src/Service/BackupRunner.php
+msgid "Files (%s): %s"
+msgstr "Ficheiros (%s): %s"
+
+#: src/Service/BackupRunner.php
+msgid "Local retention: %d old copies removed."
+msgstr "Retenção local: %d cópia(s) antiga(s) removida(s)."
+
+#: src/Service/BackupRunner.php
+msgid "External copy: %s"
+msgstr "Cópia externa: %s"
+
+#: src/Service/BackupRunner.php
+msgid "External retention: %d old copies removed%s."
+msgstr "Retenção externa: %d cópia(s) antiga(s) removida(s)%s."
+
+#: src/Service/BackupRunner.php
+msgid "No external copy (Backup.remote is empty)."
+msgstr "Sem cópia externa (Backup.remote vazio)."
+
+#: src/Service/BackupRunner.php
+msgid "mysqldump failed (exit code %d)."
+msgstr "mysqldump falhou (código %d)."
+
+#: src/Service/BackupRunner.php
+msgid "Listing the external copy (rsync) failed (exit code %d): the external retention was not applied."
+msgstr "A listagem da cópia externa (rsync) falhou (código %d): a retenção externa não foi aplicada."
+
+#: src/Service/BackupRunner.php
+msgid "Removing the old external copies (rsync) failed (exit code %d)."
+msgstr "A remoção das cópias externas antigas (rsync) falhou (código %d)."
+
+#: src/Service/BackupRunner.php
+msgid "The external copy (rsync) failed (exit code %d)."
+msgstr "A cópia externa (rsync) falhou (código %d)."
+
+#: src/Service/BackupRunner.php
+msgid "proc_open is disabled in this PHP: mysqldump and rsync cannot run."
+msgstr "proc_open está desativado neste PHP: não é possível correr o mysqldump nem o rsync."
+
+#: src/Service/BackupRunner.php
+msgid "Could not run: %s"
+msgstr "Não foi possível executar: %s"
